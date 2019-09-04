@@ -54,6 +54,9 @@ func (a *HitBTCAPI) FetchRate() (*RateInfo, error) {
 	}
 
 	data, err := res.Normalize()
+	if err != nil {
+		return nil, err
+	}
 
 	ri := RateInfo{
 		BaseCurrency:    "DASH",

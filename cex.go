@@ -55,6 +55,9 @@ func (a *CexAPI) FetchRate() (*RateInfo, error) {
 	}
 
 	data, err := res.Normalize()
+	if err != nil {
+		return nil, err
+	}
 
 	ri := RateInfo{
 		BaseCurrency:    data.Pair.Base,
