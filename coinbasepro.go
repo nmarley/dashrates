@@ -26,7 +26,7 @@ func NewCoinbaseProAPI() *CoinbaseProAPI {
 // DisplayName returns the exchange display name. It is part of the RateAPI
 // interface implementation.
 func (a *CoinbaseProAPI) DisplayName() string {
-	return "CoinbasePro"
+	return "Coinbase Pro"
 }
 
 // FetchRate gets the Dash exchange rate from the CoinbasePro API.
