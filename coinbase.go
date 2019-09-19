@@ -12,18 +12,15 @@ import (
 // CoinbaseAPI implements the RateAPI interface and contains info necessary for
 // calling to the public Coinbase price ticker API.
 type CoinbaseAPI struct {
-	BaseAPIURL            string
-	PriceTickerEndpoint   string
-	ExchangeRatesEndpoint string
+	BaseAPIURL          string
+	PriceTickerEndpoint string
 }
 
 // NewCoinbaseAPI is a constructor for CoinbaseAPI.
 func NewCoinbaseAPI() *CoinbaseAPI {
 	return &CoinbaseAPI{
-		BaseAPIURL: "https://api.coinbase.com",
-		// TODO: Update this when DASH is added to Coinbase
-		PriceTickerEndpoint:   "/v2/exchange-rates?currency=LTC",
-		ExchangeRatesEndpoint: "/v2/exchange-rates?currency=LTC",
+		BaseAPIURL:          "https://api.coinbase.com",
+		PriceTickerEndpoint: "/v2/exchange-rates?currency=DASH",
 	}
 }
 
@@ -37,7 +34,7 @@ func (a *CoinbaseAPI) DisplayName() string {
 //
 // This is part of the RateAPI interface implementation.
 func (a *CoinbaseAPI) FetchRate() (*RateInfo, error) {
-	resp, err := http.Get(a.BaseAPIURL + a.ExchangeRatesEndpoint)
+	resp, err := http.Get(a.BaseAPIURL + a.PriceTickerEndpoint)
 	if err != nil {
 		return nil, err
 	}
