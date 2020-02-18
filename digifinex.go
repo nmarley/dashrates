@@ -63,7 +63,7 @@ func (a *DigifinexAPI) FetchRate() (*RateInfo, error) {
 	return &ri, nil
 }
 
-// digifinexPriceResp is used in parsing the Digifinex API response only.
+// digifinexPubTickerResp is used in parsing the Digifinex API response only.
 type digifinexPubTickerResp struct {
 	Ticker []digifinexPubTickerData `json:"ticker"`
 	Date   int64                    `json:"date"`
