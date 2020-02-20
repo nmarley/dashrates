@@ -66,18 +66,18 @@ func (a *DigifinexAPI) FetchRate() (*RateInfo, error) {
 // digifinexPriceResp is used in parsing the Digifinex API response only.
 type digifinexPubTickerResp struct {
 	Ticker []digifinexPubTickerData `json:"ticker"`
-	Date   int64 `json:"date"`
-	Code   int64 `json:"code"`
+	Date   int64                    `json:"date"`
+	Code   int64                    `json:"code"`
 }
 
 type digifinexPubTickerData struct {
-	Vol     float64  `json:"vol"`
-	Change  float64  `json:"change"`
-	BaseVol float64  `json:"base_vol"`
-	Sell    float64  `json:"sell"`
-	Last    float64  `json:"last"`
-	Symbol  string   `json:"symbol"`
-	Low     float64  `json:"low"`
-	Buy     float64  `json:"buy"`
-	High    float64  `json:"high"`
+	Vol     float64 `json:"vol"`
+	Change  float64 `json:"change"`
+	BaseVol float64 `json:"base_vol"`
+	Sell    float64 `json:"sell"`
+	Last    float64 `json:"last"`
+	Symbol  string  `json:"symbol"`
+	Low     float64 `json:"low"`
+	Buy     float64 `json:"buy"`
+	High    float64 `json:"high"`
 }
