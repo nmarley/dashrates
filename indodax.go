@@ -60,7 +60,7 @@ func (a *IndodaxAPI) FetchRate() (*RateInfo, error) {
 
 	ri := RateInfo{
 		BaseCurrency:    "DASH",
-		QuoteCurrency:   "USD",
+		QuoteCurrency:   "BTC",
 		LastPrice:       data.Last,
 		BaseAssetVolume: data.VolBtc,
 		FetchTime:       now,
