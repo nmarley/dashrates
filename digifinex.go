@@ -54,7 +54,7 @@ func (a *DigifinexAPI) FetchRate() (*RateInfo, error) {
 
 	ri := RateInfo{
 		BaseCurrency:    "DASH",
-		QuoteCurrency:   "USD",
+		QuoteCurrency:   "USDT",
 		LastPrice:       res.Ticker[0].Last,
 		BaseAssetVolume: res.Ticker[0].BaseVol,
 		FetchTime:       now,
@@ -70,6 +70,7 @@ type digifinexPubTickerResp struct {
 	Code   int64                    `json:"code"`
 }
 
+// digifinexPubTickerData is used in parsing the Digifinex API response only.
 type digifinexPubTickerData struct {
 	Vol     float64 `json:"vol"`
 	Change  float64 `json:"change"`
