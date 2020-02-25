@@ -60,7 +60,7 @@ func (a *WhitebitAPI) FetchRate() (*RateInfo, error) {
 
 	ri := RateInfo{
 		BaseCurrency:    "DASH",
-		QuoteCurrency:   "USDT",
+		QuoteCurrency:   "USD",
 		LastPrice:       data.Last,
 		BaseAssetVolume: data.Volume,
 		FetchTime:       now,
