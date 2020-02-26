@@ -18,7 +18,7 @@ type DigifinexAPI struct {
 func NewDigifinexAPI() *DigifinexAPI {
 	return &DigifinexAPI{
 		BaseAPIURL:          "https://openapi.digifinex.com",
-		PriceTickerEndpoint: "/v3/ticker?symbol=dash_usdt",
+		PriceTickerEndpoint: "/v3/ticker?symbol=dash_btc",
 	}
 }
 
@@ -54,7 +54,7 @@ func (a *DigifinexAPI) FetchRate() (*RateInfo, error) {
 
 	ri := RateInfo{
 		BaseCurrency:    "DASH",
-		QuoteCurrency:   "USD",
+		QuoteCurrency:   "BTC",
 		LastPrice:       res.Ticker[0].Last,
 		BaseAssetVolume: res.Ticker[0].BaseVol,
 		FetchTime:       now,
@@ -63,13 +63,14 @@ func (a *DigifinexAPI) FetchRate() (*RateInfo, error) {
 	return &ri, nil
 }
 
-// digifinexPriceResp is used in parsing the Digifinex API response only.
+// digifinexPubTickerResp is used in parsing the Digifinex API response only.
 type digifinexPubTickerResp struct {
 	Ticker []digifinexPubTickerData `json:"ticker"`
 	Date   int64                    `json:"date"`
 	Code   int64                    `json:"code"`
 }
 
+// digifinexPubTickerData is used in parsing the Digifinex API response only.
 type digifinexPubTickerData struct {
 	Vol     float64 `json:"vol"`
 	Change  float64 `json:"change"`
