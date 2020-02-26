@@ -19,7 +19,7 @@ type BiboxAPI struct {
 func NewBiboxAPI() *BiboxAPI {
 	return &BiboxAPI{
 		BaseAPIURL:          "https://api.bibox.com",
-		PriceTickerEndpoint: "/v1/mdata?cmd=market&pair=DASH_USDT",
+		PriceTickerEndpoint: "/v1/mdata?cmd=market&pair=DASH_BTC",
 	}
 }
 
@@ -60,7 +60,7 @@ func (a *BiboxAPI) FetchRate() (*RateInfo, error) {
 
 	ri := RateInfo{
 		BaseCurrency:    "DASH",
-		QuoteCurrency:   "USDT",
+		QuoteCurrency:   "BTC",
 		LastPrice:       data.Last,
 		BaseAssetVolume: data.Vol24h,
 		FetchTime:       now,
