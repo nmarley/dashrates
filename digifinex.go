@@ -18,7 +18,7 @@ type DigifinexAPI struct {
 func NewDigifinexAPI() *DigifinexAPI {
 	return &DigifinexAPI{
 		BaseAPIURL:          "https://openapi.digifinex.com",
-		PriceTickerEndpoint: "/v3/ticker?symbol=dash_usdt",
+		PriceTickerEndpoint: "/v3/ticker?symbol=dash_btc",
 	}
 }
 
@@ -54,7 +54,7 @@ func (a *DigifinexAPI) FetchRate() (*RateInfo, error) {
 
 	ri := RateInfo{
 		BaseCurrency:    "DASH",
-		QuoteCurrency:   "USDT",
+		QuoteCurrency:   "BTC",
 		LastPrice:       res.Ticker[0].Last,
 		BaseAssetVolume: res.Ticker[0].BaseVol,
 		FetchTime:       now,
