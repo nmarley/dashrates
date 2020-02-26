@@ -73,34 +73,34 @@ func (a *CointradeAPI) FetchRate() (*RateInfo, error) {
 type cointradePubTickerResp struct {
 	Success bool
 	Message string
-	Result []struct {
-		Timestamp	 int64  `json:"timestamp"`
-		Market       string `json:"market"`
-		Ask          string `json:"ask"`
-		Bid          string `json:"bid"`
-		Last         string `json:"last"`
-		Spread       string `json:"spread"`
-		Low24h       string `json:"low24h"`
-		High24h      string `json:"high24h"`
-		Vol24h       string `json:"vol24h"`
-		QuoteVolume  string `json:"quoteVolume"`
-		IsFrozen     int    `json:"isFrozen"`
+	Result  []struct {
+		Timestamp   int64  `json:"timestamp"`
+		Market      string `json:"market"`
+		Ask         string `json:"ask"`
+		Bid         string `json:"bid"`
+		Last        string `json:"last"`
+		Spread      string `json:"spread"`
+		Low24h      string `json:"low24h"`
+		High24h     string `json:"high24h"`
+		Vol24h      string `json:"vol24h"`
+		QuoteVolume string `json:"quoteVolume"`
+		IsFrozen    int    `json:"isFrozen"`
 	}
 }
 
 // cointradePubTickerData is used in parsing the Cointrade API response only.
 type cointradePubTickerData struct {
-		Timestamp	   int64 
-		Market         string
-		Ask            float64
-		Bid            float64
-		Last           float64
-		Spread         float64
-		Low24h         float64
-		High24h        float64
-		Vol24h         float64
-		QuoteVolume    float64
-		IsFrozen       bool
+	Timestamp   int64
+	Market      string
+	Ask         float64
+	Bid         float64
+	Last        float64
+	Spread      float64
+	Low24h      float64
+	High24h     float64
+	Vol24h      float64
+	QuoteVolume float64
+	IsFrozen    bool
 }
 
 // Normalize parses the fields in cointradePubTickerResp and returns a
@@ -152,16 +152,16 @@ func (resp *cointradePubTickerResp) Normalize() (*cointradePubTickerData, error)
 	}
 
 	return &cointradePubTickerData{
-		Timestamp:	    resp.Result[0].Timestamp ,
-		Market:         resp.Result[0].Market,
-		Ask:            ask,
-		Bid:            bid,
-		Last:           last,
-		Spread:         spread,
-		Low24h:         low24h,
-		High24h:        high24h,
-		Vol24h:         vol24h,
-		QuoteVolume:    quoteVolume,
-		IsFrozen:       isFrozenBool,
+		Timestamp:   resp.Result[0].Timestamp,
+		Market:      resp.Result[0].Market,
+		Ask:         ask,
+		Bid:         bid,
+		Last:        last,
+		Spread:      spread,
+		Low24h:      low24h,
+		High24h:     high24h,
+		Vol24h:      vol24h,
+		QuoteVolume: quoteVolume,
+		IsFrozen:    isFrozenBool,
 	}, nil
 }
