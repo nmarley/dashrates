@@ -73,30 +73,30 @@ func (a *WhitebitAPI) FetchRate() (*RateInfo, error) {
 type whitebitPubTickerResp struct {
 	Success bool
 	Message string
-	Result struct {
-		Bid            string `json:"bid"`
-		Ask            string `json:"ask"`
-		Open           string `json:"open"`
-		High           string `json:"high"`
-		Low            string `json:"low"`
-		Last           string `json:"last"`
-		Volume         string `json:"volume"`
-		Deal           string `json:"deal"`
-		Change         string `json:"change"`
+	Result  struct {
+		Bid    string `json:"bid"`
+		Ask    string `json:"ask"`
+		Open   string `json:"open"`
+		High   string `json:"high"`
+		Low    string `json:"low"`
+		Last   string `json:"last"`
+		Volume string `json:"volume"`
+		Deal   string `json:"deal"`
+		Change string `json:"change"`
 	}
 }
 
 // whitebitPubTickerData is used in parsing the Whitebit API response only.
 type whitebitPubTickerData struct {
-	Bid            float64
-	Ask            float64
-	Open           float64
-	High           float64
-	Low            float64
-	Last           float64
-	Volume         float64
-	Deal           float64
-	Change         float64
+	Bid    float64
+	Ask    float64
+	Open   float64
+	High   float64
+	Low    float64
+	Last   float64
+	Volume float64
+	Deal   float64
+	Change float64
 }
 
 // Normalize parses the fields in whitebitPubTickerResp and returns a
