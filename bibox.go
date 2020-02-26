@@ -93,8 +93,8 @@ type biboxPubTickerResp struct {
 		HighUsd        string `json:"high_usd"`
 		LowUsd         string `json:"low_usd"`
 	}
-	Cmd    string `json:"cmd"`
-	Ver    string `json:"ver"`
+	Cmd string `json:"cmd"`
+	Ver string `json:"ver"`
 }
 
 // biboxPubTickerData is used in parsing the Bibox API response only.
