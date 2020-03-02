@@ -115,8 +115,8 @@ func (resp *coinbaseProTickerResp) Normalize() (*coinbaseProTickerData, error) {
 		return nil, err
 	}
 
-	layout := "2006-01-02T15:04:05.000Z"
-	ts, err := time.Parse(layout, resp.Timestamp)
+	//layout := "2006-01-02T15:04:05.000Z"
+	ts, err := time.Parse(time.RFC3339, resp.Timestamp)
 	if err != nil {
 		return nil, err
 	}
