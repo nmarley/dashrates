@@ -8,16 +8,16 @@ import (
 	"time"
 )
 
-// KucoinAPI implements the RateAPI interface and contains info necessary for
-// calling to the public Kucoin price ticker API.
-type KucoinAPI struct {
+// KuCoinAPI implements the RateAPI interface and contains info necessary for
+// calling to the public KuCoin price ticker API.
+type KuCoinAPI struct {
 	BaseAPIURL          string
 	PriceTickerEndpoint string
 }
 
-// NewKucoinAPI is a constructor for KucoinAPI.
-func NewKucoinAPI() *KucoinAPI {
-	return &KucoinAPI{
+// NewKuCoinAPI is a constructor for KuCoinAPI.
+func NewKuCoinAPI() *KuCoinAPI {
+	return &KuCoinAPI{
 		BaseAPIURL:          "https://api.kucoin.com",
 		PriceTickerEndpoint: "/api/v1/market/orderbook/level1?symbol=DASH-BTC",
 	}
@@ -25,14 +25,14 @@ func NewKucoinAPI() *KucoinAPI {
 
 // DisplayName returns the exchange display name. It is part of the RateAPI
 // interface implementation.
-func (a *KucoinAPI) DisplayName() string {
-	return "Kucoin"
+func (a *KuCoinAPI) DisplayName() string {
+	return "KuCoin"
 }
 
-// FetchRate gets the Dash exchange rate from the Kucoin API.
+// FetchRate gets the Dash exchange rate from the KuCoin API.
 //
 // This is part of the RateAPI interface implementation.
-func (a *KucoinAPI) FetchRate() (*RateInfo, error) {
+func (a *KuCoinAPI) FetchRate() (*RateInfo, error) {
 	resp, err := http.Get(a.BaseAPIURL + a.PriceTickerEndpoint)
 	if err != nil {
 		return nil, err
@@ -69,7 +69,7 @@ func (a *KucoinAPI) FetchRate() (*RateInfo, error) {
 	return &ri, nil
 }
 
-// kucoinPubTickerResp is used in parsing the Kucoin API response only.
+// kucoinPubTickerResp is used in parsing the KuCoin API response only.
 type kucoinPubTickerResp struct {
 	Code string `json:"code"`
 	Data struct {
@@ -84,7 +84,7 @@ type kucoinPubTickerResp struct {
 	}
 }
 
-// kucoinTickerData has the output of the parsed KucoinPubTickerResp and
+// kucoinTickerData has the output of the parsed KuCoinPubTickerResp and
 // has proper data types.
 type kucoinTickerData struct {
 	Sequence    int64
@@ -97,7 +97,7 @@ type kucoinTickerData struct {
 	BestAskSize float64
 }
 
-// Normalize parses the fields in KucoinPubTickerResp and returns a
+// Normalize parses the fields in KuCoinPubTickerResp and returns a
 // kucoinTickerData with proper data types.
 func (resp *kucoinPubTickerResp) Normalize() (*kucoinTickerData, error) {
 	sequence, err := strconv.ParseInt(resp.Data.Sequence, 10, 64)
