@@ -8,16 +8,16 @@ import (
 	"time"
 )
 
-// WhitebitAPI implements the RateAPI interface and contains info necessary for
-// calling to the public Whitebit price ticker API.
-type WhitebitAPI struct {
+// WhiteBITAPI implements the RateAPI interface and contains info necessary for
+// calling to the public WhiteBIT price ticker API.
+type WhiteBITAPI struct {
 	BaseAPIURL          string
 	PriceTickerEndpoint string
 }
 
-// NewWhitebitAPI is a constructor for WhitebitAPI.
-func NewWhitebitAPI() *WhitebitAPI {
-	return &WhitebitAPI{
+// NewWhiteBITAPI is a constructor for WhiteBITAPI.
+func NewWhiteBITAPI() *WhiteBITAPI {
+	return &WhiteBITAPI{
 		BaseAPIURL:          "https://whitebit.com",
 		PriceTickerEndpoint: "/api/v1/public/ticker?market=DASH_USD",
 	}
@@ -25,14 +25,14 @@ func NewWhitebitAPI() *WhitebitAPI {
 
 // DisplayName returns the exchange display name. It is part of the RateAPI
 // interface implementation.
-func (a *WhitebitAPI) DisplayName() string {
-	return "Whitebit"
+func (a *WhiteBITAPI) DisplayName() string {
+	return "WhiteBIT"
 }
 
-// FetchRate gets the Dash exchange rate from the Whitebit API.
+// FetchRate gets the Dash exchange rate from the WhiteBIT API.
 //
 // This is part of the RateAPI interface implementation.
-func (a *WhitebitAPI) FetchRate() (*RateInfo, error) {
+func (a *WhiteBITAPI) FetchRate() (*RateInfo, error) {
 	resp, err := http.Get(a.BaseAPIURL + a.PriceTickerEndpoint)
 	if err != nil {
 		return nil, err
@@ -69,7 +69,7 @@ func (a *WhitebitAPI) FetchRate() (*RateInfo, error) {
 	return &ri, nil
 }
 
-// whitebitPubTickerResp is used in parsing the Whitebit API response only.
+// whitebitPubTickerResp is used in parsing the WhiteBIT API response only.
 type whitebitPubTickerResp struct {
 	Success bool
 	Message string
@@ -86,7 +86,7 @@ type whitebitPubTickerResp struct {
 	}
 }
 
-// whitebitPubTickerData is used in parsing the Whitebit API response only.
+// whitebitPubTickerData is used in parsing the WhiteBIT API response only.
 type whitebitPubTickerData struct {
 	Bid    float64
 	Ask    float64
