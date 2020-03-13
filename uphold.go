@@ -60,7 +60,7 @@ func (a *UpholdAPI) FetchRate() (*RateInfo, error) {
 
 	ri := RateInfo{
 		BaseCurrency:    "DASH",
-		QuoteCurrency:   "BTC",
+		QuoteCurrency:   "USD",
 		LastPrice:       data.Ask,
 		BaseAssetVolume: 0,
 		FetchTime:       now,
