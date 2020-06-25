@@ -60,7 +60,7 @@ func (a *LiquidAPI) FetchRate() (*RateInfo, error) {
 
 	ri := RateInfo{
 		BaseCurrency:    "DASH",
-		QuoteCurrency:   "USD",
+		QuoteCurrency:   "BTC",
 		LastPrice:       data.LastPrice,
 		BaseAssetVolume: data.Volume24h,
 		FetchTime:       now,
