@@ -71,9 +71,9 @@ func (a *UpholdAPI) FetchRate() (*RateInfo, error) {
 
 // upholdPubTickerResp is used in parsing the Uphold API response only.
 type upholdPubTickerResp struct {
-		Ask      string `json:"ask"`
-		Bid      string `json:"bid"`
-		Currency string `json:"currency"`
+	Ask      string `json:"ask"`
+	Bid      string `json:"bid"`
+	Currency string `json:"currency"`
 }
 
 // upholdPubTickerData is used in parsing the Uphold API response only.
