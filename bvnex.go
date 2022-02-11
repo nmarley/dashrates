@@ -100,44 +100,44 @@ type bvnexPubTickerData struct {
 // Normalize parses the fields in bvnexPubTickerResp and returns a
 // bvnexPubTickerData with proper data types.
 func (resp *bvnexPubTickerResp) Normalize() (*bvnexPubTickerData, error) {
+	// last and baseVolume are the only ones used. Don't error on other fields
 	last, err := strconv.ParseFloat(resp.Data.Last, 64)
+	if err != nil {
+		return nil, err
+	}
+	baseVolume, err := strconv.ParseFloat(resp.Data.BaseVolume, 64)
 	if err != nil {
 		return nil, err
 	}
 
 	lowestAsk, err := strconv.ParseFloat(resp.Data.LowestAsk, 64)
 	if err != nil {
-		return nil, err
+		lowestAsk = 0.0
 	}
 
 	highestBid, err := strconv.ParseFloat(resp.Data.HighestBid, 64)
 	if err != nil {
-		return nil, err
+		highestBid = 0.0
 	}
 
 	percentChange, err := strconv.ParseFloat(resp.Data.PercentChange, 64)
 	if err != nil {
-		return nil, err
-	}
-
-	baseVolume, err := strconv.ParseFloat(resp.Data.BaseVolume, 64)
-	if err != nil {
-		return nil, err
+		percentChange = 0.0
 	}
 
 	quoteVolume, err := strconv.ParseFloat(resp.Data.QuoteVolume, 64)
 	if err != nil {
-		return nil, err
+		quoteVolume = 0.0
 	}
 
 	high24hr, err := strconv.ParseFloat(resp.Data.High24hr, 64)
 	if err != nil {
-		return nil, err
+		high24hr = 0.0
 	}
 
 	low24hr, err := strconv.ParseFloat(resp.Data.Low24hr, 64)
 	if err != nil {
-		return nil, err
+		low24hr = 0.0
 	}
 
 	return &bvnexPubTickerData{
