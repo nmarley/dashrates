@@ -71,14 +71,14 @@ func (a *LiquidAPI) FetchRate() (*RateInfo, error) {
 
 // liquidPubTickerData is used in parsing the Liquid API response only.
 type liquidPubTickerData struct {
-	Id        int64
+	ID        int64
 	LastPrice float64
 	Volume24h float64
 }
 
 // liquidPubTickerResp is used in parsing the Liquid API response only.
 type liquidPubTickerResp struct {
-	Id        string `json:"id"`
+	ID        string `json:"id"`
 	LastPrice string `json:"last_traded_price"`
 	Volume24h string `json:"volume_24h"`
 }
@@ -86,24 +86,24 @@ type liquidPubTickerResp struct {
 // Normalize parses the fields in liquidPubTickerResp and returns a
 // liquidPubTickerData with proper data types.
 func (resp *liquidPubTickerResp) Normalize() (*liquidPubTickerData, error) {
-	id, err := strconv.ParseInt(resp.Id, 10, 64)
+	id, err := strconv.ParseInt(resp.ID, 10, 64)
 	if err != nil {
 		return nil, err
 	}
 
-	last_price, err := strconv.ParseFloat(resp.LastPrice, 64)
+	lastPrice, err := strconv.ParseFloat(resp.LastPrice, 64)
 	if err != nil {
 		return nil, err
 	}
 
-	volume_24h, err := strconv.ParseFloat(resp.Volume24h, 64)
+	volume24h, err := strconv.ParseFloat(resp.Volume24h, 64)
 	if err != nil {
 		return nil, err
 	}
 
 	return &liquidPubTickerData{
-		Id:        id,
-		LastPrice: last_price,
-		Volume24h: volume_24h,
+		ID:        id,
+		LastPrice: lastPrice,
+		Volume24h: volume24h,
 	}, nil
 }

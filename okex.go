@@ -113,12 +113,12 @@ type okexPubTickerResp struct {
 // Normalize parses the fields in OKExPubTickerResp and returns a
 // okexTickerData with proper data types.
 func (resp *okexPubTickerResp) Normalize() (*okexTickerData, error) {
-	best_ask, err := strconv.ParseFloat(resp.BestAsk, 64)
+	bestAsk, err := strconv.ParseFloat(resp.BestAsk, 64)
 	if err != nil {
 		return nil, err
 	}
 
-	best_bid, err := strconv.ParseFloat(resp.BestBid, 64)
+	bestBid, err := strconv.ParseFloat(resp.BestBid, 64)
 	if err != nil {
 		return nil, err
 	}
@@ -128,7 +128,7 @@ func (resp *okexPubTickerResp) Normalize() (*okexTickerData, error) {
 		return nil, err
 	}
 
-	last_qty, err := strconv.ParseFloat(resp.LastQty, 64)
+	lastQty, err := strconv.ParseFloat(resp.LastQty, 64)
 	if err != nil {
 		return nil, err
 	}
@@ -138,7 +138,7 @@ func (resp *okexPubTickerResp) Normalize() (*okexTickerData, error) {
 		return nil, err
 	}
 
-	best_ask_size, err := strconv.ParseFloat(resp.BestAskSize, 64)
+	bestAskSize, err := strconv.ParseFloat(resp.BestAskSize, 64)
 	if err != nil {
 		return nil, err
 	}
@@ -148,32 +148,32 @@ func (resp *okexPubTickerResp) Normalize() (*okexTickerData, error) {
 		return nil, err
 	}
 
-	best_bid_size, err := strconv.ParseFloat(resp.BestBidSize, 64)
+	bestBidSize, err := strconv.ParseFloat(resp.BestBidSize, 64)
 	if err != nil {
 		return nil, err
 	}
 
-	open_24h, err := strconv.ParseFloat(resp.Open24h, 64)
+	open24h, err := strconv.ParseFloat(resp.Open24h, 64)
 	if err != nil {
 		return nil, err
 	}
 
-	high_24h, err := strconv.ParseFloat(resp.High24h, 64)
+	high24h, err := strconv.ParseFloat(resp.High24h, 64)
 	if err != nil {
 		return nil, err
 	}
 
-	low_24h, err := strconv.ParseFloat(resp.Low24h, 64)
+	low24h, err := strconv.ParseFloat(resp.Low24h, 64)
 	if err != nil {
 		return nil, err
 	}
 
-	base_volume_24h, err := strconv.ParseFloat(resp.BaseVolume24h, 64)
+	baseVolume24h, err := strconv.ParseFloat(resp.BaseVolume24h, 64)
 	if err != nil {
 		return nil, err
 	}
 
-	quote_volume_24h, err := strconv.ParseFloat(resp.QuoteVolume24h, 64)
+	quoteVolume24h, err := strconv.ParseFloat(resp.QuoteVolume24h, 64)
 	if err != nil {
 		return nil, err
 	}
@@ -184,21 +184,21 @@ func (resp *okexPubTickerResp) Normalize() (*okexTickerData, error) {
 	}
 
 	return &okexTickerData{
-		BestAsk:        best_ask,
-		BestBid:        best_bid,
+		BestAsk:        bestAsk,
+		BestBid:        bestBid,
 		InstrumentID:   resp.InstrumentID,
 		ProductID:      resp.ProductID,
 		Last:           last,
-		LastQty:        last_qty,
+		LastQty:        lastQty,
 		Ask:            ask,
-		BestAskSize:    best_ask_size,
+		BestAskSize:    bestAskSize,
 		Bid:            bid,
-		BestBidSize:    best_bid_size,
-		Open24h:        open_24h,
-		High24h:        high_24h,
-		Low24h:         low_24h,
-		BaseVolume24h:  base_volume_24h,
+		BestBidSize:    bestBidSize,
+		Open24h:        open24h,
+		High24h:        high24h,
+		Low24h:         low24h,
+		BaseVolume24h:  baseVolume24h,
 		Timestamp:      ts,
-		QuoteVolume24h: quote_volume_24h,
+		QuoteVolume24h: quoteVolume24h,
 	}, nil
 }

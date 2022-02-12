@@ -108,12 +108,12 @@ func (resp *indodaxPubTickerResp) Normalize() (*indodaxPubTickerData, error) {
 		return nil, err
 	}
 
-	vol_drk, err := strconv.ParseFloat(resp.Ticker.VolDrk, 64)
+	volDrk, err := strconv.ParseFloat(resp.Ticker.VolDrk, 64)
 	if err != nil {
 		return nil, err
 	}
 
-	vol_btc, err := strconv.ParseFloat(resp.Ticker.VolBtc, 64)
+	volBtc, err := strconv.ParseFloat(resp.Ticker.VolBtc, 64)
 	if err != nil {
 		return nil, err
 	}
@@ -136,8 +136,8 @@ func (resp *indodaxPubTickerResp) Normalize() (*indodaxPubTickerData, error) {
 	return &indodaxPubTickerData{
 		High:       high,
 		Low:        low,
-		VolDrk:     vol_drk,
-		VolBtc:     vol_btc,
+		VolDrk:     volDrk,
+		VolBtc:     volBtc,
 		Last:       last,
 		Buy:        buy,
 		Sell:       sell,

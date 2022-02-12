@@ -81,7 +81,7 @@ type biboxPubTickerResp struct {
 		Change         string `json:"change"`
 		LowCny         string `json:"low_cny"`
 		BaseLastCny    string `json:"base_last_cny"`
-		AreaId         int    `json:"area_id"`
+		AreaID         int    `json:"area_id"`
 		Percent        string `json:"percent"`
 		LastCny        string `json:"last_cny"`
 		High           string `json:"high"`
@@ -89,7 +89,7 @@ type biboxPubTickerResp struct {
 		PairType       int    `json:"pair_type"`
 		LastUsd        string `json:"last_usd"`
 		Vol24h         string `json:"vol24H"`
-		Id             int    `json:"id"`
+		ID             int    `json:"id"`
 		HighUsd        string `json:"high_usd"`
 		LowUsd         string `json:"low_usd"`
 	}
@@ -108,7 +108,7 @@ type biboxPubTickerData struct {
 	Change         float64
 	LowCny         float64
 	BaseLastCny    float64
-	AreaId         int
+	AreaID         int
 	Percent        string
 	LastCny        float64
 	High           float64
@@ -116,7 +116,7 @@ type biboxPubTickerData struct {
 	PairType       int
 	LastUsd        float64
 	Vol24h         float64
-	Id             int
+	ID             int
 	HighUsd        float64
 	LowUsd         float64
 }
@@ -124,7 +124,7 @@ type biboxPubTickerData struct {
 // Normalize parses the fields in biboxPubTickerResp and returns a
 // biboxPubTickerData with proper data types.
 func (resp *biboxPubTickerResp) Normalize() (*biboxPubTickerData, error) {
-	high_cny, err := strconv.ParseFloat(resp.Result.HighCny, 64)
+	highCny, err := strconv.ParseFloat(resp.Result.HighCny, 64)
 	if err != nil {
 		return nil, err
 	}
@@ -144,17 +144,17 @@ func (resp *biboxPubTickerResp) Normalize() (*biboxPubTickerData, error) {
 		return nil, err
 	}
 
-	low_cny, err := strconv.ParseFloat(resp.Result.LowCny, 64)
+	lowCny, err := strconv.ParseFloat(resp.Result.LowCny, 64)
 	if err != nil {
 		return nil, err
 	}
 
-	base_last_cny, err := strconv.ParseFloat(resp.Result.BaseLastCny, 64)
+	baseLastCny, err := strconv.ParseFloat(resp.Result.BaseLastCny, 64)
 	if err != nil {
 		return nil, err
 	}
 
-	last_cny, err := strconv.ParseFloat(resp.Result.LastCny, 64)
+	lastCny, err := strconv.ParseFloat(resp.Result.LastCny, 64)
 	if err != nil {
 		return nil, err
 	}
@@ -169,7 +169,7 @@ func (resp *biboxPubTickerResp) Normalize() (*biboxPubTickerData, error) {
 		return nil, err
 	}
 
-	last_usd, err := strconv.ParseFloat(resp.Result.LastUsd, 64)
+	lastUsd, err := strconv.ParseFloat(resp.Result.LastUsd, 64)
 	if err != nil {
 		return nil, err
 	}
@@ -179,36 +179,36 @@ func (resp *biboxPubTickerResp) Normalize() (*biboxPubTickerData, error) {
 		return nil, err
 	}
 
-	high_usd, err := strconv.ParseFloat(resp.Result.HighUsd, 64)
+	highUsd, err := strconv.ParseFloat(resp.Result.HighUsd, 64)
 	if err != nil {
 		return nil, err
 	}
 
-	low_usd, err := strconv.ParseFloat(resp.Result.LowUsd, 64)
+	lowUsd, err := strconv.ParseFloat(resp.Result.LowUsd, 64)
 	if err != nil {
 		return nil, err
 	}
 
 	return &biboxPubTickerData{
 		IsHide:         resp.Result.IsHide,
-		HighCny:        high_cny,
+		HighCny:        highCny,
 		Amount:         amount,
 		CoinSymbol:     resp.Result.CoinSymbol,
 		Last:           last,
 		CurrencySymbol: resp.Result.CurrencySymbol,
 		Change:         change,
-		LowCny:         low_cny,
-		BaseLastCny:    base_last_cny,
-		AreaId:         resp.Result.AreaId,
+		LowCny:         lowCny,
+		BaseLastCny:    baseLastCny,
+		AreaID:         resp.Result.AreaID,
 		Percent:        resp.Result.Percent,
-		LastCny:        last_cny,
+		LastCny:        lastCny,
 		High:           high,
 		Low:            low,
 		PairType:       resp.Result.PairType,
-		LastUsd:        last_usd,
+		LastUsd:        lastUsd,
 		Vol24h:         vol24H,
-		Id:             resp.Result.Id,
-		HighUsd:        high_usd,
-		LowUsd:         low_usd,
+		ID:             resp.Result.ID,
+		HighUsd:        highUsd,
+		LowUsd:         lowUsd,
 	}, nil
 }
