@@ -39,7 +39,29 @@ You can debug if exchanges are working or not by using the `test_util`:
 ```sh
 cd test_util/
 go build
-./test_util
+./test_util 2>err | tee out
+```
+
+Sample output from test util:
+
+```
+Binance OK
+Bitfinex OK
+Coinbase OK
+Cointrade ERROR
+Kraken OK
+Livecoin ERROR
+Yobit OK
+```
+
+View the STDERR stream to see error detail:
+
+```sh
+# err file from above example
+$ cat err
+
+error fetching Cointrade: Market is not available.
+error fetching Livecoin: Get "https://api.livecoin.net/exchange/ticker?currencyPair=DASH/USD": dial tcp: lookup api.livecoin.net: no such host
 ```
 
 ## Contributing
