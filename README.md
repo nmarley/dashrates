@@ -2,6 +2,15 @@
 
 > Fetch Dash exchange rate data from various exchanges
 
+
+## Contributing
+
+Please run `make` to check code lint before committing
+
+```sh
+make
+```
+
 ## Install
 
 ```sh
