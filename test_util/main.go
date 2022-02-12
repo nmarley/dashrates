@@ -47,7 +47,7 @@ func main() {
 		_, err := api.FetchRate()
 		if err != nil {
 			// print err message to stderr
-			fmt.Fprintf(os.Stderr, "error: %v\n", err.Error())
+			fmt.Fprintf(os.Stderr, "error fetching %s: %v\n", api.DisplayName(), err.Error())
 			// print a <exch> BAD message to stdout
 			fmt.Fprintf(os.Stdout, "%v ERROR\n", api.DisplayName())
 		} else {
